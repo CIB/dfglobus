@@ -3,11 +3,16 @@
     <div class="tile">
       <h3>dfglobus</h3>
       <span>Ready to import your maps.</span>
-      <span class="start-button-row"> </span>
       <span class="space"></span>
+      <span class="start-button-row"> </span>
       <span>Controls:</span>
       <span>Left mouse button to rotate the view</span>
       <span>Arrow keys or right mouse button to move</span>
+      <span class="space"></span>
+      <span>
+        Version 0.1.0 |
+        <a href="https://github.com/CIB/dfglobus" target="_blank">github</a>
+      </span>
     </div>
     <div class="tile">
       <span class="import-row">Select an elevation file. (region*-el.bmp)</span>
@@ -95,7 +100,6 @@ export default class LoadScreen extends Vue {
         await sleep(10)
       }
     }
-    console.log('after 3')
     this.heightmapProgress = 100
     rows = flatten(reverse(chunk(rows, image.width)))
 
@@ -114,7 +118,6 @@ export default class LoadScreen extends Vue {
       fileReader.onload = () => resolve(fileReader.result as string)
       fileReader.onerror = reject
     })
-    console.log('result', result)
 
     function loadImage(dataUrl: string): Promise<HTMLImageElement> {
       return new Promise((resolve, reject) => {
@@ -178,5 +181,17 @@ h3 {
   flex-grow: 1;
   height: 20px;
   opacity: 0.8;
+}
+
+a:link {
+  color: lightblue;
+}
+
+a:visited {
+  color: rgb(105, 193, 223);
+}
+
+a:active {
+  color: rgb(71, 115, 129);
 }
 </style>

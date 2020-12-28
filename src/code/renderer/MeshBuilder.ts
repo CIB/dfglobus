@@ -92,7 +92,7 @@ export async function buildMesh(
     side: THREE.DoubleSide,
     alphaTest: 0,
     opacity: 1,
-    color: color || '0xffffff',
+    color: color || '#ffffff',
     transparent: false,
   })
 

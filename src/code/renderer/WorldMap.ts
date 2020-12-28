@@ -22,7 +22,6 @@ export class WorldMap {
   private loadedChunks: Map2D<Chunk> = new Map2D()
 
   public async renderHeightmap(heightmap: HeightMap): Promise<void> {
-    console.log('texutre', renderer.texture!.currentSrc)
     const { mesh, resources } = await this.buildMeshFromHeightmap(
       heightmap,
       renderer.texture!,
