@@ -59,10 +59,15 @@ export function buildLandscapeGeometry(
     idx += 3
   }
 
-  for (let x = 0; x < heightmap.width - detail; x += detail) {
-    for (let y = 0; y < heightmap.height - detail; y += detail) {
-      buildTriangle([x, y, x + detail, y, x, y + detail])
-      buildTriangle([x + detail, y, x + detail, y + detail, x, y + detail])
+  for (let x = 0; x <= heightmap.width - detail; x += detail) {
+    for (let y = 0; y <= heightmap.height - detail; y += detail) {
+      let endX = x + detail
+      let endY = y + detail
+      if (endX == heightmap.width) endX--
+      if (endY == heightmap.height) endY--
+
+      buildTriangle([x, y, endX, y, x, endY])
+      buildTriangle([endX, y, endX, endY, x, endY])
     }
   }
 
@@ -116,7 +121,7 @@ export async function buildMesh(
     const wireFrameGeometry = new THREE.EdgesGeometry(geometry) // or WireframeGeometry
     const wireFrameMaterial = new THREE.LineBasicMaterial({
       color: 0x00000,
-      linewidth: 200,
+      linewidth: 1,
     })
     const wireframe = new THREE.LineSegments(
       wireFrameGeometry,
